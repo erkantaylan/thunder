@@ -1,0 +1,8 @@
+﻿services:
+  thunder.web:
+    image: thunder.web
+    ports:
+      - '80:8080'
+    build:
+      context: .
+      dockerfile: Thunder.Web/Dockerfile

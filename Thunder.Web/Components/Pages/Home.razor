@@ -1,0 +1,45 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<InputSelect @bind-Value="selectedItem">
+    @foreach (string item in Items)
+    {
+        <option value="@item">@item</option>
+    }
+</InputSelect>
+
+<div class="grid-container">
+    <a href="@GetFullUrl(":5082/swagger")" target="_blank" class="button-link">Mercury.Gateway:5082</a>
+    <a href="@GetFullUrl(":58213")" target="_blank" class="button-link">Mercury.PhpMyAdmin:58213</a>
+    <a href="@GetFullUrl(":58210")" target="_blank" class="button-link">Mercury.Postgres:58210</a>
+    <a href="@GetFullUrl(":58210")" target="_blank" class="button-link">Mercury.Store:58208</a>
+    <a href="@GetFullUrl(":5132")" target="_blank" class="button-link">Mercury.Store.Portal:5132</a>
+    <a href="@GetFullUrl(":5089")" target="_blank" class="button-link">Mercury.Translate:5089</a>
+    <a href="@GetFullUrl(":5341")" target="_blank" class="button-link">Mercury.Seq:5341</a>
+</div>
+
+
+<div class="grid-container" style="margin-top: 50px">
+    <a href="http://erkan.h4ck.me:5678" target="_blank" class="button-link">n8n:5678</a>
+    <a href="http://erkan.h4ck.me:8080" target="_blank" class="button-link">Jenkins:8080</a>
+    <a href="http://erkan.h4ck.me:9443" target="_blank" class="button-link">Portainer:9443</a>
+</div>
+
+
+@code {
+
+    private static readonly List<string> Items =
+    [
+        "http://localhost",
+        "http://erkan.h4ck.me"
+    ];
+
+    private string selectedItem = Items.First();
+
+    private string GetFullUrl(string path)
+    {
+        return $"{selectedItem}{path}";
+    }
+
+}
