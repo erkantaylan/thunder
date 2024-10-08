@@ -15,12 +15,4 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            // Stop and remove containers after the job completes
-            script {
-                sh 'docker-compose -f compose.yaml down'
-            }
-        }
-    }
 }
